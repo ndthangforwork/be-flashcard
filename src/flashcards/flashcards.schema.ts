@@ -17,6 +17,7 @@ export class Flashcard {
   @Prop({ type: String, required: true })
   name!: string;
 
+  @Prop({ type: [String], default: [] })
   tag!: string[];
 
   @Prop({ type: [{ front: String, back: String }], default: [] })
