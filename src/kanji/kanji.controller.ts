@@ -16,4 +16,16 @@ export class KanjiController {
 
         return this.kanjiService.recognize(body.strokes);
         }
+
+    @Post('check-result')
+        // Hãy nhận cả 'body' là một object, sau đó mới lấy strokes ra
+        async checkResult(@Body() body: { strokes: any[] }) { 
+            console.log('Dữ liệu nhận được từ FE:', body);
+            
+            if (!body.strokes) {
+                throw new BadRequestException('Thanh niên ơi, thiếu key "strokes" trong body rồi!');
+            }
+
+            return this.kanjiService.checkResult(body.strokes);
+        }
 }
